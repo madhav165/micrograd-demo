@@ -29,24 +29,11 @@ x1w1x2w2 = x1w1 + x2w2; x1w1x2w2.label = 'x1*w1 + x2*w2'
 n = x1w1x2w2 + b; n.label='n'
 o = n.tanh(); o.label='o'
 
-# set to intialize _backward() correctly at output
-o.grad = 1.0
-
-# calculating the grad one node at a time in reverse order
-o._backward()
-n._backward()
-x1w1x2w2._backward()
-b._backward()
-x1w1._backward()
-x2w2._backward()
-x1._backward()
-w1._backward()
-x2._backward()
-w2._backward()
+# calculating the grad one node at a time 
+# in reverse orderusing topological graph
+o.backward()
 
 g = Graph(o)
 gout = g.draw_dot()
 gout.render('gout_neuron')
 
-topo = g.build_topo()
-logging.info(topo)
