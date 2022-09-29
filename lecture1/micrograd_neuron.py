@@ -47,3 +47,6 @@ w2._backward()
 g = Graph(o)
 gout = g.draw_dot()
 gout.render('gout_neuron')
+
+topo = g.build_topo()
+logging.info(topo)

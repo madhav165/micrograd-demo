@@ -37,3 +37,14 @@ class Graph:
             dot.edge(str(id(n1)), str(id(n2)) + n2._op)
 
         return dot
+
+    def build_topo(self):
+        v = self.root
+        topo = []
+        visited = set()
+        if v not in visited:
+            visited.add(v)
+            topo.append(v)
+            for child in v._prev:
+                topo.extend(Graph(child).build_topo())
+        return topo
