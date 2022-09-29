@@ -6,6 +6,9 @@ from graph import Graph
 
 logging.getLogger().setLevel(logging.INFO)
 
+import os
+os.chdir(os.path.dirname(os.path.realpath(__file__)))
+
 class Value:
 
     def __init__(self, data, _children=(), _op='', label=''):
@@ -33,10 +36,16 @@ e = a * b
 e.label = 'e'
 d = e + c
 d.label = 'd'
+f = Value(-2, label='f')
+L = f * d
+L.label = 'L'
 logging.info(f"d = a * b + c = {d}")
 logging.info(f'd._prev = {d._prev}')
 logging.info(f'd._op = {d._op}')
 
-g = Graph(d)
+g = Graph(L)
 logging.info(f'g = {g}')
 logging.info(f'g.trace = {g.trace()}')
+
+gout = g.draw_dot()
+gout.render('gout')
