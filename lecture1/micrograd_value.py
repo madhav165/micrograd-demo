@@ -35,12 +35,20 @@ logging.info(f'g = {g}')
 logging.info(f'g.trace = {g.trace()}')
 
 # assign gradients based on chain rule
+
+# dL/dL = 1
 L.grad = 1.0
+# dL/df = d
 f.grad = d.data
+# dL/dd = f
 d.grad = f.data
+# dL/de = dL/dd * dd/de
 e.grad = d.grad * 1.0
+# dL/dc = dL/dd * dd/dc
 c.grad = d.grad * 1.0
+# dL/db = dL/de * de/db
 b.grad = e.grad * a.data
+# dL/da = dL/de * de/da
 a.grad = e.grad * b.data
 
 # display graph
