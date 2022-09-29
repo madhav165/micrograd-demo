@@ -36,4 +36,3 @@ o.backward()
 g = Graph(o)
 gout = g.draw_dot()
 gout.render('gout_neuron')
-
