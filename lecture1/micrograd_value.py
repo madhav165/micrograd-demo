@@ -13,6 +13,7 @@ class Value:
 
     def __init__(self, data, _children=(), _op='', label=''):
         self.data = data
+        self.grad = 0.0
         self._prev = set(_children)
         self._op = _op
         self.label = label
@@ -46,6 +47,14 @@ logging.info(f'd._op = {d._op}')
 g = Graph(L)
 logging.info(f'g = {g}')
 logging.info(f'g.trace = {g.trace()}')
+
+L.grad = 1
+f.grad = d.data
+d.grad = f.data
+e.grad = d.grad * 1.0
+c.grad = d.grad * 1.0
+b.grad = e.grad * a.data
+a.grad = e.grad * b.data
 
 gout = g.draw_dot()
 gout.render('gout')

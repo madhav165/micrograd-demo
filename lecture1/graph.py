@@ -28,7 +28,7 @@ class Graph:
 
         for n in nodes:
             uid = str(id(n))
-            dot.node(name = uid, label = f'{n.label} | data {n.data:>.4f}', shape = 'record')
+            dot.node(name = uid, label = f'{n.label} | data {n.data:>.4f} | grad {n.grad:>.4f}', shape = 'record')
             if n._op:
                 dot.node(name = uid + n._op, label = n._op)
                 dot.edge(uid + n._op, uid)
