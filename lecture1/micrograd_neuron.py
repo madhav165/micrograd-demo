@@ -14,9 +14,15 @@ os.chdir(os.path.dirname(os.path.realpath(__file__)))
 # inputs x1, x2
 x1 = Value(2.0, label='x1')
 x2 = Value(0.0, label='x2')
+
+# weights w1, w2
 w1 = Value(-3.0, label='w1')
 w2 = Value(1.0, label='w2')
+
+# bias
 b = Value(6.7, label='b')
+
+# neuron model
 x1w1 = x1 * w1; x1w1.label = 'x1*w1'
 x2w2 = x2 * w2; x2w2.label = 'x2*w2'
 x1w1x2w2 = x1w1 + x2w2; x1w1x2w2.label = 'x1*w1 + x2*w2'
