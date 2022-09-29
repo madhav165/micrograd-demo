@@ -11,7 +11,6 @@ import os
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
 class Value:
-
     def __init__(self, data, _children=(), _op='', label=''):
         self.data = data
         self.grad = 0.0
