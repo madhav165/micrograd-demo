@@ -45,4 +45,4 @@ a.grad = e.grad * b.data
 
 # display graph
 gout = g.draw_dot()
-gout.render('gout')
+gout.render('gout_value')
