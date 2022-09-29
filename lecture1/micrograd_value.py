@@ -48,7 +48,7 @@ g = Graph(L)
 logging.info(f'g = {g}')
 logging.info(f'g.trace = {g.trace()}')
 
-L.grad = 1
+L.grad = 1.0
 f.grad = d.data
 d.grad = f.data
 e.grad = d.grad * 1.0
