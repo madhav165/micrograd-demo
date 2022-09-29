@@ -47,26 +47,3 @@ w2._backward()
 g = Graph(o)
 gout = g.draw_dot()
 gout.render('gout_neuron')
-
-# # Manual
-# # do/do = 1
-# o.grad = 1.0
-# # do/dn = 1 - o**2
-# n.grad = 1 - o.data**2
-# # do/dx1w1x2w2 = do/dn * dn/dx1w1x2w2
-# x1w1x2w2.grad = n.grad * 1.0
-# # do/db = do/dn * dn/db
-# b.grad = n.grad * 1.0
-# # do/dx1w1 = do/dx1w1x2w2 * dx1w1x2w2/dx1w1
-# x1w1.grad = x1w1x2w2.grad * 1.0
-# # do/dx2w2 = do/dx1w1x2w2 * dx1w1x2w2/dx2w2
-# x2w2.grad = x1w1x2w2.grad * 1.0
-# # do/x1 = do/dx1w1 * dx1w1/dx1
-# x1.grad = x1w1.grad * w1.data
-# # do/w1 = do/dx1w1 * dx1w1/dw1
-# w1.grad = x1w1.grad * x1.data
-# # do/x2 = do/dx2w2 * dx2w2/dx2
-# x2.grad = x2w2.grad * w2.data
-# # do/w2 = do/dx2w2 * dx2w2/dw2
-# w2.grad = x2w2.grad * x2.data
-
