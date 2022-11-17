@@ -33,6 +33,8 @@ o = n.tanh(); o.label='o'
 # in reverse orderusing topological graph
 o.backward()
 
+print(o)
+
 g = Graph(o)
 gout = g.draw_dot()
 gout.render('gout_neuron')

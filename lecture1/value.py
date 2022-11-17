@@ -54,6 +54,9 @@ class Value:
         return self * other**-1
 
     def __neg__(self, other):
+        return self * -1
+
+    def __sub__(self, other):
         return self + (-other)
 
     def exp(self):

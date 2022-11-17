@@ -12,3 +12,7 @@ class Neuron:
         act = sum((wi * xi for wi, xi in zip(self.w, x)), self.b)
         out = act.tanh()
         return out
+
+# x = [2.0, 3.0]
+# n = Neuron(2)
+# print(n(x))
