@@ -23,8 +23,19 @@ xs = [
     ]
 ys = [1.0, -1.0, -1.0, 1.0]
 
-ypred = [m(x) for x in xs]
-logging.info(f'ypred = {ypred}')
+for k in range(20):
+    # forward pass
+    ypred = [m(x) for x in xs]
+    loss = sum([(yout - ygt)**2 for ygt, yout in zip(ys, ypred)])
 
-loss = sum([(yout - ygt)**2 for ygt, yout in zip(ys, ypred)])
-logging.info(f'loss = {loss}')
+    # backward pass
+    for p in m.parameters():
+        p.grad = 0
+    loss.backward()
+
+    # weight update
+    for p in m.parameters():
+        p.data += -0.05 * p.grad
+    print(k, loss.data)
+
+logging.info(ypred)
